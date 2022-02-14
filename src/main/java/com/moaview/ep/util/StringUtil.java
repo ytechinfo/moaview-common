@@ -145,10 +145,10 @@ public class StringUtil {
 	
 	/**
 	 * 
-	 * @Method Name : ltrim
-	 * @작성자 : ytkim
-	 * @작성일 : 2013. 11. 26.
-	 * @Method설명 :
+	 * @method : ltrim
+	 * @author : ytkim
+	 * @date : 2013. 11. 26.
+	 * @desc :
 	 */
 	public static String ltrim(String read_data) {
 		int read_dataLen = read_data.length();

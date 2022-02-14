@@ -122,10 +122,10 @@ public final class HttpUtils {
 
 	/**
 	 * 
-	 * @Method Name : getHeaderInfo
-	 * @작성자 : ytkim
-	 * @작성일 : 2013. 10. 18.
-	 * @Method설명 :
+	 * @method : getHeaderInfo
+	 * @author : ytkim
+	 * @date : 2013. 10. 18.
+	 * @desc :
 	 */
 	public static String getHeaderInfo(HttpServletRequest req , String headerKey)  {
 		return Collections.list(req.getHeaders(headerKey)).stream().collect(Collectors.joining("  ; "));
@@ -144,10 +144,10 @@ public final class HttpUtils {
 
 	/**
 	 * 
-	 * @Method Name : getString
-	 * @작성자 : ytkim
-	 * @작성일 : 2013. 10. 18.
-	 * @Method설명 :
+	 * @method : getString
+	 * @author : ytkim
+	 * @date : 2013. 10. 18.
+	 * @desc :
 	 */
 	public static String getString(HttpServletRequest req, String name) {
 		return getString(req, name, "");
@@ -161,10 +161,10 @@ public final class HttpUtils {
 
 	/**
 	 * 
-	 * @Method Name : getStringValues
-	 * @작성자 : ytkim
-	 * @작성일 : 2013. 10. 18.
-	 * @Method설명 :
+	 * @method : getStringValues
+	 * @author : ytkim
+	 * @date : 2013. 10. 18.
+	 * @desc :
 	 */
 	public static String[] getStringValues(HttpServletRequest req, String name) {
 		String[] v = req.getParameterValues(name);
@@ -180,10 +180,10 @@ public final class HttpUtils {
 
 	/**
 	 * 
-	 * @Method Name : getInt
-	 * @작성자 : ytkim
-	 * @작성일 : 2013. 10. 18.
-	 * @Method설명 :
+	 * @method : getInt
+	 * @author : ytkim
+	 * @date : 2013. 10. 18.
+	 * @desc :
 	 */
 	public static int getInt(HttpServletRequest req, String name) {
 		return getInt(req, name, -1);
@@ -221,12 +221,13 @@ public final class HttpUtils {
 
 	/**
      * 
-     * @Method Name  : createCookie
-     * @Method 설명 : cookie 생성
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : createCookie
+     * @desc : cookie 생성
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param name
+     * @param value
      * @return
      */
 	public static Cookie createCookie(String name, String value) throws IOException {
@@ -235,12 +236,15 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : createCookie
-     * @Method 설명 : cookie 생성
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : createCookie
+     * @desc : cookie 생성
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param name
+     * @param value
+     * @param path
+     * @param maxAge
      * @return
      */
 	public static Cookie createCookie(String name, String value, String path, int maxAge) throws IOException {
@@ -252,12 +256,16 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : createCookie
-     * @Method 설명 : cookie 생성
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : createCookie
+     * @desc : cookie 생성
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param name
+     * @param value
+     * @param domain
+     * @param path
+     * @param maxAge
      * @return
      */
 	public static Cookie createCookie(String name, String value, String domain, String path, int maxAge)
@@ -271,12 +279,13 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : getCookie
-     * @Method 설명 : cookie 얻기
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : getCookie
+     * @desc : cookie 얻기
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param req
+     * @param name
      * @return
      */
 	public static Cookie getCookie(HttpServletRequest req, String name) {
@@ -295,13 +304,14 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : getValue
-     * @Method 설명 : cookie value 얻기
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
-     * @return
+     * @method  : getValue
+     * @desc : cookie value 얻기
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param req HttpServletRequest
+     * @param name parameter name
+     * @return String cokie value
      */
 	public static String getCookieValue(HttpServletRequest req, String name) throws IOException {
 		Cookie cookie = getCookie(req, name);
@@ -313,12 +323,12 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : getAllCookieString
-     * @Method 설명 : all cookie 
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : getAllCookieString
+     * @desc : all cookie 
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param req
      * @return
      */
 	public static String getAllCookieString(HttpServletRequest req) throws IOException {
@@ -336,12 +346,12 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : getAllReqHeaderString
-     * @Method 설명 : all request header string
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : getAllReqHeaderString
+     * @desc : all request header string
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param req
      * @return
      */
 	public static String getAllReqHeaderString(HttpServletRequest req) throws IOException {
@@ -365,12 +375,12 @@ public final class HttpUtils {
 	
 	/**
      * 
-     * @Method Name  : getAllResHeaderString
-     * @Method 설명 : all response header string
-     * @작성자   : ytkim
-     * @작성일   : 2018. 9. 17. 
-     * @변경이력  :
-     * @param clazz
+     * @method  : getAllResHeaderString
+     * @desc : all response header string
+     * @author   : ytkim
+     * @date   : 2018. 9. 17. 
+     * @history  :
+     * @param res
      * @return
      */
 	public static String getAllResHeaderString(HttpServletResponse res) throws IOException {

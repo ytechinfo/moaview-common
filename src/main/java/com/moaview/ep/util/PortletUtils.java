@@ -21,11 +21,10 @@ import com.moaview.ep.dto.DataEntity;
 
 /**
  * 
- * @FileName : PortletUtil.java
- * @프로그램 설명 : portlet application 에서 사용되는 util
- * @Date : Sep 22, 2014
- * @작성자 : ytkim
- * @변경이력 :
+ * @fileName : PortletUtil.java
+ * @desc : portlet application 에서 사용되는 util
+ * @author : ytkim
+ * @history :
  */
 public class PortletUtils {
 	private static final PortletMode CONFIG_MODE = new PortletMode("config");
@@ -37,11 +36,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getPortletParam
-	 * @Method 설명 : 포틀릿으로 들어오는 파라미터 보기.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getPortletParam
+	 * @desc : 포틀릿으로 들어오는 파라미터 보기.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param req
 	 * @param name
 	 * @return
@@ -52,11 +51,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getPortletParam
-	 * @Method 설명 : 포틀릿으로 들어오는 파라미터 보기.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getPortletParam
+	 * @desc : 포틀릿으로 들어오는 파라미터 보기.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param req
 	 * @param name
 	 * @param initVal
@@ -70,11 +69,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getPortletAllParam
-	 * @Method 설명 : 포틀릿으로 들어온 모든 파라미터 보기.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getPortletAllParam
+	 * @desc : 포틀릿으로 들어온 모든 파라미터 보기.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param req
 	 * @return
 	 */
@@ -92,11 +91,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getAjaxPortletParam
-	 * @Method 설명 : 포틀릿으로 들어온 모든 파라미터 보기.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getAjaxPortletParam
+	 * @desc : 포틀릿으로 들어온 모든 파라미터 보기.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param req
 	 * @return
 	 */
@@ -112,11 +111,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getPortalParam
-	 * @Method 설명 : 포탈 파라미터 보기.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getPortalParam
+	 * @desc : 포탈 파라미터 보기.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param req
 	 * @param name
 	 * @return
@@ -127,11 +126,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getJsonMap
-	 * @Method 설명 : serveResource -> json data DataEntity
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getJsonMap
+	 * @desc : serveResource convert json data DataEntity
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param req
 	 * @param param
 	 * @return
@@ -177,11 +176,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : parseJson
-	 * @Method 설명 : json string -> DataEntity parse
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : parseJson
+	 * @desc : json string convert DataEntity parse
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param jsonData
 	 * @return
 	 */
@@ -191,11 +190,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getTitle
-	 * @Method 설명 : 포틀릿 타이틀
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getTitle
+	 * @desc : 포틀릿 타이틀
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param portletConfig
 	 * @param req
 	 * @return
@@ -207,11 +206,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getTitle
-	 * @Method 설명 : 포틀릿 타이틀
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getTitle
+	 * @desc : 포틀릿 타이틀
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param portletConfig
 	 * @param locale
 	 * @return
@@ -223,11 +222,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : getPreferencesData
-	 * @Method 설명 :포틀릿 매개 변수 설정 정보 보기.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : getPreferencesData
+	 * @desc :포틀릿 매개 변수 설정 정보 보기.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param request
 	 * @return
 	 */
@@ -252,11 +251,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : setPreferencesData
-	 * @Method 설명 : 포틀릿 매개 변수 설정 정보 저장.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : setPreferencesData
+	 * @desc : 포틀릿 매개 변수 설정 정보 저장.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param request
 	 * @param saveKey
 	 * @return
@@ -270,11 +269,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : setPreferencesData
-	 * @Method 설명 : 포틀릿 매개 변수 설정 정보 저장.
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : setPreferencesData
+	 * @desc : 포틀릿 매개 변수 설정 정보 저장.
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param request
 	 * @param saveKey
 	 * @param value
@@ -305,11 +304,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : encodeURI
-	 * @Method 설명 : char encode
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : encodeURI
+	 * @desc : char encode
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param val
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -321,11 +320,11 @@ public class PortletUtils {
 
 	/**
 	 * 
-	 * @Method Name : encodeURI
-	 * @Method 설명 : char encode
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : encodeURI
+	 * @desc : char encode
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param val
 	 * @param charset
 	 * @return
@@ -339,11 +338,11 @@ public class PortletUtils {
 	/**
 	 * char decode
 	 * 
-	 * @Method Name : decodeURI
-	 * @Method 설명 : char decode
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : decodeURI
+	 * @desc : char decode
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param val
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -356,11 +355,11 @@ public class PortletUtils {
 	/**
 	 * char decode
 	 * 
-	 * @Method Name : decodeURI
-	 * @Method 설명 :
-	 * @작성일 : Sep 22, 2014
-	 * @작성자 : ytkim
-	 * @변경이력 :
+	 * @method : decodeURI
+	 * @desc :
+	 * @date : Sep 22, 2014
+	 * @author : ytkim
+	 * @history :
 	 * @param val
 	 * @param charset
 	 * @return

@@ -26,10 +26,9 @@ import com.moaview.ep.dto.DataEntity;
 /**
  *
 *-----------------------------------------------------------------------------
-* @PROJECT	: vartech
-* @NAME		: EpUtils.java
-* @DESC		: 공통 util
-* @AUTHOR	: ytkim
+* @fileName		: EpUtils.java
+* @desc		: 공통 util
+* @author	: ytkim
 *-----------------------------------------------------------------------------
   DATE			AUTHOR			DESCRIPTION
 *-----------------------------------------------------------------------------
@@ -56,11 +55,11 @@ public class EpUtils {
 	}
 	/**
 	 *
-	 * @Method Name  : objectToString
-	 * @Method 설명 : object 객체 json 스트링으로 변환
-	 * @작성일   : 2015. 7. 03.
-	 * @작성자   : ytkim
-	 * @변경이력  :
+	 * @method  : objectToString
+	 * @desc : object 객체 json 스트링으로 변환
+	 * @date   : 2015. 7. 03.
+	 * @author   : ytkim
+	 * @history  :
 	 * @param json
 	 * @return
 	 */
@@ -109,11 +108,11 @@ public class EpUtils {
 	}
 	/**
 	 *
-	 * @Method Name  : jsonStringToObject
-	 * @Method 설명 : jsonString to object  , 프로퍼티 없을때 err여부.
-	 * @작성자   : ytkim
-	 * @작성일   : 2018. 10. 12.
-	 * @변경이력  :
+	 * @method  : jsonStringToObject
+	 * @desc : jsonString to object  , 프로퍼티 없을때 err여부.
+	 * @author   : ytkim
+	 * @date   : 2018. 10. 12.
+	 * @history  :
 	 * @param jsonString
 	 * @param valueType
 	 * @param ignoreProp
