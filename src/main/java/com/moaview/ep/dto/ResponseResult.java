@@ -6,22 +6,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.moaview.ep.constans.CodeEnumValue;
+
 public class ResponseResult implements Serializable {
 	private static final long serialVersionUID = 1966357376203287562L;
+	/** 상태 코드값*/
 	private int status = 200;
-	private int resultCode;
+	
+	/** 결과 코드값*/
+	private CodeEnumValue resultCode;
+	
+	/** 결과  메시지 code 다국어를 위한것.*/
 	private String messageCode;
+	
+	/** 결과  메시지*/
 	private String message;
+	
+	/** 결과 값 리스트일 경우  */
 	private List<?> list;
+	
+	/** 결과 값 하나 일 경우 */
 	private Object item;
+	
+	/** 페이징 정보 */
 	private PagingInfo page;
+	
+	/** 추가 데이터   */
 	private Map<String, Object> customs;
 
-	public int getResultCode() {
+	public CodeEnumValue getResultCode() {
 		return this.resultCode;
 	}
 
-	public void setResultCode(int code) {
+	public void setResultCode(CodeEnumValue code) {
 		this.resultCode = code;
 	}
 
