@@ -1,4 +1,4 @@
-package com.moaview.ep.dto;
+package com.moaview.ep.vo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,10 +32,10 @@ public class SearchParameter {
 	private boolean sortAscFlag;
 
 	/** 검색 시작 index */
-	private int first;
+	private int startRow;
 
 	/** 검색 끝 index */
-	private int last;
+	private int endRow;
 	
 	/** 페이지당 보여줄 페이지 갯수 */
 	private int unitPage;
@@ -45,15 +45,15 @@ public class SearchParameter {
 	private String userId;
 
 	private SearchParameter(int pageNo, int countPerPage, String category, String condition,
-			String keyword, int first, int last, int unitPage,
+			String keyword, int startRow, int endRow, int unitPage,
 			Map<String, Object> customParam, String sortCategory, boolean sortAscFlag, String userId) {
 		this.pageNo = pageNo;
 		this.countPerPage = countPerPage;
 		this.category = category;
 		this.condition = condition;
 		this.keyword = keyword;
-		this.first = first;
-		this.last = last;
+		this.startRow = startRow;
+		this.endRow = endRow;
 		this.unitPage = unitPage;
 		this.customParam = customParam;
 		this.userId = userId;
@@ -67,8 +67,8 @@ public class SearchParameter {
 		private String category;
 		private String condition;
 		private String keyword;
-		private int first;
-		private int last;
+		private int startRow;
+		private int endRow;
 		private int unitPage;
 		private Map<String, Object> customParam;
 		private String userId;
@@ -108,13 +108,13 @@ public class SearchParameter {
 			return this;
 		}
 
-		public Builder setFirst(int first) {
-			this.first = first;
+		public Builder setStartRow(int startRow) {
+			this.startRow = startRow;
 			return this;
 		}
 
-		public Builder setLast(int last) {
-			this.last = last;
+		public Builder setEndRow(int endRow) {
+			this.endRow = endRow;
 			return this;
 		}
 
@@ -156,16 +156,16 @@ public class SearchParameter {
 			if(countPerPage < 1) countPerPage = 10;
 			if(unitPage < 1) unitPage = 10;
 			
-			if(first == 0){
-				this.first = ((pageNo - 1) * this.countPerPage) + 1;
+			if(startRow == 0){
+				this.startRow = ((pageNo - 1) * this.countPerPage) + 1;
 			}
 			
-			if(last == 0){
-				this.last = this.first + this.countPerPage - 1;
+			if(endRow == 0){
+				this.endRow = this.startRow + this.countPerPage - 1;
 			}
 			
 			return new SearchParameter(pageNo, countPerPage, category, condition,
-					keyword, first, last, unitPage,
+					keyword, startRow, endRow, unitPage,
 					customParam, sortCategory, sortAscFlag, userId);
 		}
 
@@ -191,12 +191,12 @@ public class SearchParameter {
 		return keyword;
 	}
 
-	public int getFirst() {
-		return first;
+	public int getStartRow() {
+		return startRow;
 	}
 
-	public int getLast() {
-		return last;
+	public int getEndRow() {
+		return endRow;
 	}
 
 	public int getUnitPage() {

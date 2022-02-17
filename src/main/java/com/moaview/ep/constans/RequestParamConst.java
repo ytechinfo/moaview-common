@@ -38,6 +38,8 @@ public interface RequestParamConst {
 	
 	final String PAGING_END_ROW = "_endRow";
 	
+	final String PAGING_COUNT_PER_PAGE = "_countPerPage";
+	
 	final String REQ_LOCALE = "_locale";
 	
 	

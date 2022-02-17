@@ -17,7 +17,7 @@ import javax.portlet.ResourceRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import com.moaview.ep.dto.DataEntity;
+import com.moaview.ep.vo.DataEntity;
 
 /**
  * 

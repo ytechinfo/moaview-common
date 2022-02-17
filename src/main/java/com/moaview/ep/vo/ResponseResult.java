@@ -1,4 +1,4 @@
-package com.moaview.ep.dto;
+package com.moaview.ep.vo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.moaview.ep.constans.CodeEnumValue;
+import com.moaview.ep.constans.RequestResultCode;
 
 public class ResponseResult implements Serializable {
 	private static final long serialVersionUID = 1966357376203287562L;
@@ -14,7 +15,7 @@ public class ResponseResult implements Serializable {
 	private int status = 200;
 	
 	/** 결과 코드값*/
-	private CodeEnumValue resultCode;
+	private CodeEnumValue resultCode = RequestResultCode.SUCCESS;
 	
 	/** 결과  메시지 code 다국어를 위한것.*/
 	private String messageCode;

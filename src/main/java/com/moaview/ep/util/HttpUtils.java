@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.moaview.ep.constans.RequestParamConst;
-import com.moaview.ep.dto.DataEntity;
-import com.moaview.ep.dto.SearchParameter;
+import com.moaview.ep.vo.DataEntity;
+import com.moaview.ep.vo.SearchParameter;
 
 public final class HttpUtils {
 	public static final String CHAR_SET = "UTF-8";
@@ -79,6 +79,7 @@ public final class HttpUtils {
 
 			entity.put(RequestParamConst.PAGING_START_ROW, Integer.valueOf(first));
 			entity.put(RequestParamConst.PAGING_END_ROW, Integer.valueOf(last));
+			entity.put(RequestParamConst.PAGING_COUNT_PER_PAGE, countPerPage);
 		}
 
 		return entity;
@@ -398,5 +399,33 @@ public final class HttpUtils {
 		}
 			
 		return sb.toString();
+	}
+	
+	public static String getDomain(HttpServletRequest req) {
+		
+		String connDomain = req.getServerName();
+        String nameArr [] = connDomain.split("\\.");
+        
+        if(nameArr.length > 1 ) {
+        	connDomain = nameArr[nameArr.length-2]+"."+nameArr[nameArr.length-1];
+        }
+		
+		return connDomain;
+	}
+	
+	public static String getDomain(HttpServletRequest req , String prefix) {
+		return getDomain(req, prefix, false);
+	}
+	
+	public static String getDomain(HttpServletRequest req , String prefix, boolean protocalFlag) {
+		
+		String connDomain = req.getServerName();
+		String nameArr [] = connDomain.split("\\.");
+		
+		if(nameArr.length > 1 ) {
+			connDomain = nameArr[nameArr.length-2]+"."+nameArr[nameArr.length-1];
+		}
+		
+		return (protocalFlag?req.getScheme()+"://":"")+prefix+"."+connDomain;
 	}
 }

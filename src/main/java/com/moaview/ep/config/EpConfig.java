@@ -102,21 +102,65 @@ public class EpConfig {
 		return System.getProperty(key);
 	}
 
-	public Properties getProperties() {
-		try {
-			initialize();
-		} catch (EpConfigException e) {
-			e.printStackTrace();
-		}
-		return props;
+	public String viewAllProperty() {
+		return props.toString();
 	}
-
+	
+	/**
+	 * 
+	 * @param key
+	 * @return
+	 */
 	public String getProperty(String key) {
 		return getProperty(key, "");
 	}
-
+	
+	/**
+	 * get property value 
+	 * @param key property key
+	 * @param initVal default value
+	 * @return
+	 */
 	public String getProperty(String key, String initVal) {
 		return props.getProperty(key, initVal).trim();
+	}
+	
+	/**
+	 * get int property 
+	 * @param key
+	 * @return
+	 */
+	public int getIntProperty(String key) {
+		return getIntProperty(key,-1);
+	}
+	
+	/**
+	 * get int property 
+	 * @param key property key
+	 * @param initVal default value
+	 * @return
+	 */
+	public int getIntProperty(String key, int initVal) {
+		return Integer.parseInt(getProperty(key, initVal+""));
+	}
+	
+	/**
+	 * get array property split char ","
+	 * @param key
+	 * @return
+	 */
+	public String[] getArrayProperty(String key) {
+		return getArrayProperty(key,"");
+	}
+	
+	/**
+	 * get array property split char ","
+	 * @param key
+	 * @param initVal
+	 * @return
+	 */
+	public String[] getArrayProperty(String key, String initVal) {
+		return getProperty(key, initVal).split(",");
 	}
 
 	public void reload() {

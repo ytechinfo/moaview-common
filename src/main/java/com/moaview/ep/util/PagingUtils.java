@@ -1,8 +1,9 @@
 package com.moaview.ep.util;
 
 import com.moaview.ep.constans.RequestParamConst;
-import com.moaview.ep.dto.DataEntity;
-import com.moaview.ep.dto.PagingInfo;
+import com.moaview.ep.vo.DataEntity;
+import com.moaview.ep.vo.PagingInfo;
+import com.moaview.ep.vo.SearchParameter;
 
 /**
  * 
@@ -17,6 +18,10 @@ public final  class PagingUtils {
 	
 	public static PagingInfo getPageObject(int totalCount, DataEntity param) {
 		return getPageObject(totalCount, param.getInt(RequestParamConst.PAGE_NO,1), param.getInt(RequestParamConst.COUNT_PER_PAGE,COUNT_PER_PAGE), param.getInt(RequestParamConst.UNIT_PAGE,UNIT_PAGE));
+	}
+	
+	public static PagingInfo getPageObject(int totalCount, SearchParameter schParam) {
+		return getPageObject(totalCount, checkNumValue(schParam.getPageNo(), 1), checkNumValue(schParam.getCountPerPage(), COUNT_PER_PAGE), checkNumValue(schParam.getUnitPage(), UNIT_PAGE));
 	}
 	
 	public static PagingInfo getPageObject(int totalCount, int currentPageNo) {
@@ -114,6 +119,11 @@ public final  class PagingUtils {
 			return allPage / list_num;
 		}
 		return allPage / list_num + 1;
+	}
+	
+	private static int checkNumValue(int chkVal, int defaultValue) {
+		
+		return chkVal > 0 ? chkVal : defaultValue;
 	}
 
 }

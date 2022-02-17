@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public final class DateUtil
+public final class DateUtils
 {
   public static final int YEAR = 1;
   public static final int MONTH = 2;

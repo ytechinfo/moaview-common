@@ -1,4 +1,4 @@
-package com.moaview.ep.dto;
+package com.moaview.ep.vo;
 
 public class PagingInfo {
 	private int currPage; 

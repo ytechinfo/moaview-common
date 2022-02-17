@@ -14,6 +14,11 @@ repositories {
     mavenCentral()
 }
 
+def projectName ='moaview-ep'
+def projectDesc ='java common class'
+def projectGroupId ='com.moaview'
+def projectVersion ='0.0.2'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -103,11 +108,6 @@ eclipse { // 이클립스 project facets설정.
 // JAVA file compile charset
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-
-def projectName ='moaview-ep'
-def projectDesc ='java common class'
-def projectGroupId ='com.moaview'
-def projectVersion ='0.0.1'
 
 def releasesDomain=project.MOAVIEW_RELEASES_URL
 def releasesId=project.MOAVIEW_RELEASES_ID
