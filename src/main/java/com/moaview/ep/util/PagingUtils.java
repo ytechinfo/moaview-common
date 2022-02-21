@@ -17,7 +17,7 @@ public final  class PagingUtils {
 	private static final int UNIT_PAGE = 10;
 	
 	public static PagingInfo getPageObject(int totalCount, DataEntity param) {
-		return getPageObject(totalCount, param.getInt(RequestParamConst.PAGE_NO,1), param.getInt(RequestParamConst.COUNT_PER_PAGE,COUNT_PER_PAGE), param.getInt(RequestParamConst.UNIT_PAGE,UNIT_PAGE));
+		return getPageObject(totalCount, param.getInt(RequestParamConst.PAGE_NO, 1), param.getInt(RequestParamConst.COUNT_PER_PAGE, COUNT_PER_PAGE), param.getInt(RequestParamConst.UNIT_PAGE,UNIT_PAGE));
 	}
 	
 	public static PagingInfo getPageObject(int totalCount, SearchParameter schParam) {
@@ -110,6 +110,8 @@ public final  class PagingUtils {
 		pagingInfo.setCurrEndPage(currEndPage < 1 ? 1: currEndPage);
 		pagingInfo.setTotalCount(totalCount);
 		pagingInfo.setTotalPage(totalPage);
+		pagingInfo.setCountPerPage(countPerPage);
+		
 
 		return pagingInfo;
 	}

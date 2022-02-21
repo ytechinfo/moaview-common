@@ -1,16 +1,29 @@
 package com.moaview.ep.vo;
 
 public class PagingInfo {
+	
 	private int currPage; 
+	
 	private int unitPage; 
+	
 	private int prePage; 
+	
 	private boolean prePage_is; 
+	
 	private int nextPage; 
+	
 	private boolean nextPage_is; 
+	
 	private int currStartPage; 
+	
 	private int currEndPage; 
+	
 	private int totalCount; 
+	
 	private int totalPage;
+	
+	private int countPerPage;
+	
 	public int getCurrPage() {
 		return currPage;
 	}
@@ -72,6 +85,13 @@ public class PagingInfo {
 		this.totalPage = totalPage;
 	} 
 	
+	public int getCountPerPage() {
+		return countPerPage;
+	}
+	public void setCountPerPage(int countPerPage) {
+		this.countPerPage = countPerPage;
+	}
+	
 	@Override
 	public String toString() {
 		
@@ -88,4 +108,5 @@ public class PagingInfo {
 				.append(", totalPage : ").append(totalPage)
 				.toString();
 	}
+	
 }
