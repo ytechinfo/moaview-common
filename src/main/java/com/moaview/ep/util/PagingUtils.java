@@ -21,7 +21,7 @@ public final  class PagingUtils {
 	}
 	
 	public static PagingInfo getPageObject(int totalCount, SearchParameter schParam) {
-		return getPageObject(totalCount, checkNumValue(schParam.getPageNo(), 1), checkNumValue(schParam.getCountPerPage(), COUNT_PER_PAGE), checkNumValue(schParam.getUnitPage(), UNIT_PAGE));
+		return getPageObject(totalCount, getNumValue(schParam.getPageNo(), 1), getNumValue(schParam.getCountPerPage(), COUNT_PER_PAGE), getNumValue(schParam.getUnitPage(), UNIT_PAGE));
 	}
 	
 	public static PagingInfo getPageObject(int totalCount, int currentPageNo) {
@@ -33,18 +33,8 @@ public final  class PagingUtils {
 	}
 
 	public static PagingInfo getPageObject(int totalCount, int currPage, int countPerPage, int unitPage) {
-		int unitCount = 100;
 
-		if (totalCount == 0) {
-			countPerPage = unitCount;
-		} else if (totalCount < countPerPage) {
-			countPerPage = totalCount / unitCount * unitCount;
-			if (totalCount % unitCount > 0) {
-				countPerPage += unitCount;
-			}
-		}
-
-		int totalPage = getMaxNum(totalCount, countPerPage);
+		int totalPage = getTotalPage(totalCount, countPerPage);
 
 		if (totalPage < currPage)
 			currPage = totalPage;
@@ -116,14 +106,14 @@ public final  class PagingUtils {
 		return pagingInfo;
 	}
 
-	private static int getMaxNum(int allPage, int list_num) {
-		if (allPage % list_num == 0) {
-			return allPage / list_num;
+	private static int getTotalPage(int totalCount, int countPerPage) {
+		if (totalCount % countPerPage == 0) {
+			return totalCount / countPerPage;
 		}
-		return allPage / list_num + 1;
+		return totalCount / countPerPage + 1;
 	}
 	
-	private static int checkNumValue(int chkVal, int defaultValue) {
+	private static int getNumValue(int chkVal, int defaultValue) {
 		
 		return chkVal > 0 ? chkVal : defaultValue;
 	}
