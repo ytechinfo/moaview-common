@@ -66,7 +66,7 @@ public final class DateUtils
   }
 
   public static String getWeekToDay(String yyyymm, int week, String pattern) {
-    Calendar cal = Calendar.getInstance(Locale.FRANCE);
+    Calendar cal = Calendar.getInstance(Locale.KOREA);
 
     int new_yy = Integer.parseInt(yyyymm.substring(0, 4));
     int new_mm = Integer.parseInt(yyyymm.substring(4, 6));
@@ -80,7 +80,7 @@ public final class DateUtils
 
     cal.add(5, (week - 1) * 7 + (cal.getFirstDayOfWeek() - cal.get(7)));
 
-    SimpleDateFormat formatter = new SimpleDateFormat(pattern, Locale.FRANCE);
+    SimpleDateFormat formatter = new SimpleDateFormat(pattern, Locale.KOREA);
 
     return formatter.format(cal.getTime());
   }
@@ -127,7 +127,7 @@ public final class DateUtils
   }
 
   public static int getWeek(String yyyymmdd, int addDay) {
-    Calendar cal = Calendar.getInstance(Locale.FRANCE);
+    Calendar cal = Calendar.getInstance(Locale.KOREA);
     int new_yy = Integer.parseInt(yyyymmdd.substring(0, 4));
     int new_mm = Integer.parseInt(yyyymmdd.substring(4, 6));
     int new_dd = Integer.parseInt(yyyymmdd.substring(6, 8));
@@ -256,7 +256,7 @@ public final class DateUtils
   }
 
   public static Calendar getCalendarInstance(String p_date) {
-    Locale LOCALE_COUNTRY = Locale.FRANCE;
+    Locale LOCALE_COUNTRY = Locale.KOREA;
     Calendar retCal = Calendar.getInstance(LOCALE_COUNTRY);
 
     if ((p_date != null) && (p_date.length() == 8)) {

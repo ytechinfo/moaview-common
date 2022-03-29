@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
-public abstract class AbstractCaseEntity extends HashMap<String,Object> {
+public abstract class AbstractHashMap extends HashMap<String,Object> {
 	private static final long serialVersionUID = 1L;
 
 	public String getString(String key) {
@@ -71,7 +71,7 @@ public abstract class AbstractCaseEntity extends HashMap<String,Object> {
 		try {
 			if ("".equals(value))
 				return init;
-			return new Boolean(getString(key)).booleanValue();
+			return Boolean.parseBoolean(getString(key));
 		} catch (Exception e) {
 		}
 		return init;
@@ -83,7 +83,7 @@ public abstract class AbstractCaseEntity extends HashMap<String,Object> {
 		if ("".equals(value))
 			return 0.0D;
 		try {
-			return Double.valueOf(value).doubleValue();
+			return Double.valueOf(value);
 		} catch (Exception e) {
 		}
 		return 0.0D;
@@ -100,7 +100,7 @@ public abstract class AbstractCaseEntity extends HashMap<String,Object> {
 	public int getInt(String key, int initVal) {
 		String value = getString(key);
 
-		return !numberChk(value) ? initVal : new Integer(value).intValue();
+		return !numberChk(value) ? initVal : Integer.parseInt(value);
 	}
 
 	public long longValue(String key) {
@@ -112,7 +112,7 @@ public abstract class AbstractCaseEntity extends HashMap<String,Object> {
 
 		long lvalue = 0L;
 		try {
-			lvalue = Long.valueOf(value).longValue();
+			lvalue = Long.valueOf(value);
 		} catch (Exception e) {
 			lvalue = 0L;
 		}
@@ -134,15 +134,15 @@ public abstract class AbstractCaseEntity extends HashMap<String,Object> {
 	}
 
 	public Integer getInteger(String key) {
-		return new Integer(getInt(key));
+		return getInt(key);
 	}
 
 	public Long getLong(String key) {
-		return new Long(longValue(key));
+		return longValue(key);
 	}
 
 	public Double getDouble(String key) {
-		return new Double(doubleValue(key));
+		return doubleValue(key);
 	}
 
 	public BigDecimal getBigDecimal(String key) {

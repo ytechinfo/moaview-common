@@ -1,6 +1,6 @@
 package com.moaview.ep.vo;
 
-public class UpperCaseHashMap extends AbstractCaseEntity {
+public class UpperCaseHashMap extends AbstractHashMap {
 	private static final long serialVersionUID = 1L;
 	
 	@Override

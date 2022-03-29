@@ -2,7 +2,7 @@ package com.moaview.ep.vo;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class CamelCaseHashMap extends AbstractCaseEntity {
+public class CamelCaseHashMap extends AbstractHashMap {
 	
 	private static final long serialVersionUID = 1L;
 
