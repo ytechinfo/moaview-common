@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.moaview.ep.constans.RequestParamConst;
+import com.moaview.ep.vo.ClientInfo;
 import com.moaview.ep.vo.DataEntity;
 import com.moaview.ep.vo.SearchParameter;
 
@@ -413,11 +414,11 @@ public final class HttpUtils {
 		return connDomain;
 	}
 	
-	public static String getDomain(HttpServletRequest req , String prefix) {
+	public static String getDomain(HttpServletRequest req, String prefix) {
 		return getDomain(req, prefix, false);
 	}
 	
-	public static String getDomain(HttpServletRequest req , String prefix, boolean protocalFlag) {
+	public static String getDomain(HttpServletRequest req, String prefix, boolean protocalFlag) {
 		
 		String connDomain = req.getServerName();
 		String nameArr [] = connDomain.split("\\.");
@@ -427,5 +428,142 @@ public final class HttpUtils {
 		}
 		
 		return (protocalFlag?req.getScheme()+"://":"")+prefix+"."+connDomain;
+	}
+	
+	/**
+	 *
+	 * @Method Name  : getClientPcInfo
+	 * @Method 설명 : client info
+	 * @작성일   : 2019. 9. 21.
+	 * @작성자   : ytkim
+	 * @변경이력  :
+	 * @param request
+	 * @return
+	 */
+
+	public static ClientInfo getClientInfo(HttpServletRequest request) {
+		String userAgent = "Unknown";
+	    String osType = "Unknown";
+	    String browser = "Unknown";
+	    String deviceType = "pc";
+
+       userAgent = request.getHeader("User-Agent");
+
+       if (userAgent.indexOf("Windows NT") >= 0) {
+           osType = "Windows";
+       } else if (userAgent.indexOf("Mac OS") >= 0) {
+           osType = "Mac";
+
+           if(userAgent.indexOf("iPhone") >= 0) {
+               deviceType = "iPhone";
+           } else if(userAgent.indexOf("iPad") >= 0) {
+               deviceType = "iPad";
+           }
+
+       } else if (userAgent.indexOf("X11") >= 0) {
+           osType = "Unix";
+       } else if (userAgent.indexOf("android") >= 0) {
+           osType = "Android";
+           deviceType = "Android";
+       }
+
+       String userAgentLower = userAgent.toLowerCase();
+
+       if (userAgentLower.contains("msie") || userAgentLower.contains("rv")) {
+       	browser= "msie";
+       } else if (userAgentLower.contains("safari") && userAgentLower.contains("version")) {
+       	browser= "Safari";
+       } else if (userAgentLower.contains("opr") || userAgentLower.contains("opera")) {
+       	browser= "opera";
+       } else if(userAgentLower.contains("edge")){
+           browser = "edge";
+       } else if (userAgentLower.contains("chrome")) {
+       	browser= "chrome";
+       } else if ((userAgentLower.indexOf("mozilla/7.0") > -1) || (userAgentLower.indexOf("netscape6") != -1) || (userAgentLower.indexOf(
+               "mozilla/4.7") != -1) || (userAgentLower.indexOf("mozilla/4.78") != -1) || (userAgentLower.indexOf(
+               "mozilla/4.08") != -1) || (userAgentLower.indexOf("mozilla/3") != -1)) {
+           browser = "Netscape";
+       } else if (userAgentLower.contains("firefox")) {
+       	browser= "firefox";
+       } else{
+           browser = "UnKnown, More-Info: " + userAgentLower;
+       }
+
+       ClientInfo cpi = new ClientInfo();
+
+       cpi.setUserAgent(userAgent);
+       cpi.setOsType(osType);
+       cpi.setDeviceType(deviceType);
+       cpi.setBrowser(browser.toLowerCase());
+       cpi.setIp(getClientIp(request));
+		return cpi;
+	}
+
+	public static boolean isIE(ClientInfo clientPcInfo) {
+		return "msie".equalsIgnoreCase(clientPcInfo.getBrowser());
+	}
+
+	public static boolean isChrome(ClientInfo clientPcInfo) {
+		return "chrome".equalsIgnoreCase(clientPcInfo.getBrowser());
+	}
+
+	public static boolean isFirefox(ClientInfo clientPcInfo) {
+		return "firefox".equalsIgnoreCase(clientPcInfo.getBrowser());
+	}
+
+	public static boolean isSafari(ClientInfo clientPcInfo) {
+		return "safari".equalsIgnoreCase(clientPcInfo.getBrowser());
+	}
+
+	public static boolean isOpera(ClientInfo clientPcInfo) {
+		return "opera".equalsIgnoreCase(clientPcInfo.getBrowser());
+	}
+
+	/**
+	 *
+	 * @Method Name  : getClientIp
+	 * @Method 설명 : ip 정보.
+	 * @작성일   : 2019. 9. 21.
+	 * @작성자   : ytkim
+	 * @변경이력  :
+	 * @param req
+	 * @return
+	 */
+	public static String getClientIp(HttpServletRequest req) {
+
+		String[] headerKeyArr = {  "X-Forwarded-For", "Proxy-Client-IP", "WL-Proxy-Client-IP"
+				,"HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED"
+				,"HTTP_FORWARDED_FOR", "HTTP_X_CLUSTER_CLIENT_IP", "HTTP_FORWARDED"
+		};
+
+		for (String headerKey : headerKeyArr) {
+			String ip = req.getHeader(headerKey);
+
+			if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
+				return ip;
+			}
+		}
+
+		return req.getRemoteAddr();
+	}
+	
+	public static String getDownloadFileName(HttpServletRequest req, String downFileName) throws UnsupportedEncodingException {
+		ClientInfo clientInfo = getClientInfo(req);
+
+		if (isIE(clientInfo)) {
+			downFileName = URLEncoder.encode(downFileName, "UTF-8").replaceAll("\\+", "%20");
+		}else if(isFirefox(clientInfo)){
+			downFileName = "\""+new String(downFileName.getBytes("UTF-8"), "ISO-8859-1")+"\"";
+		}else if(isChrome(clientInfo)){
+			downFileName = URLEncoder.encode(downFileName, "UTF-8").replaceAll("\\+", "%20");
+		}else if(isSafari(clientInfo)){
+			downFileName = "\""+new String(downFileName.getBytes("UTF-8"), "ISO-8859-1")+"\"";
+		}else if(isOpera(clientInfo)){
+			downFileName = "\""+new String(downFileName.getBytes("UTF-8"), "ISO-8859-1")+"\"";
+		}else {
+			downFileName = URLEncoder.encode(downFileName, "UTF-8").replaceAll("\\+", "%20");
+		}
+		
+		return downFileName;
 	}
 }
