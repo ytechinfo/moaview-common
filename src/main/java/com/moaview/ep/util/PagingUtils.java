@@ -106,12 +106,12 @@ public final  class PagingUtils {
 		return pagingInfo;
 	}
 	
-	public static int getFirstRow(PagingInfo page) {
+	public static int getStartRow(PagingInfo page) {
 		return (page.getCurrPage() - 1) * page.getCountPerPage() + 1;
 	}
 	
 	public static int getEndRow(PagingInfo page) {
-		return getFirstRow(page) + page.getCountPerPage() - 1;
+		return getStartRow(page) + page.getCountPerPage() - 1;
 	}
 
 	private static int getTotalPage(int totalCount, int countPerPage) {
