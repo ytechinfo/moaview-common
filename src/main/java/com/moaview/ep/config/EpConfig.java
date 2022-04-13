@@ -16,13 +16,15 @@ import java.util.Properties;
  */
 public class EpConfig {
 
-	protected static Object lock = new Object();
+	protected Object lock = new Object();
 
-	private static long jdf_last_modified = 0L;
+	private long jdf_last_modified = 0L;
 
-	protected static Properties props = null;
+	protected Properties props = null;
 
-	private static String prop_file = "config/ep_config.properties";
+	private String prop_file = "config/ep_config.properties";
+	
+	private String charSet;
 
 	private EpConfig() {
 		try {
@@ -82,6 +84,8 @@ public class EpConfig {
 					jdf_fin.close();
 					jdf_last_modified = jdf_file.lastModified();
 				}
+				
+				charSet =getProperty("charset","UTF-8");
 			} catch (EpConfigException e) {
 				jdf_last_modified = 0L;
 				throw new EpConfigException(getClass().getName() + e.getMessage());
@@ -169,6 +173,10 @@ public class EpConfig {
 		} catch (EpConfigException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getCharSet() {
+		return charSet;
 	}
 
 	private static class EpConfigHolder {

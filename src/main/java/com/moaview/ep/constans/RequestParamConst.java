@@ -1,9 +1,9 @@
 package com.moaview.ep.constans;
 
 /**
- * 
- * @author ytkim
- *
+* @fileName		: RequestParamConst.java
+* @desc		: common request parameter name
+* @author	: ytkim
  */
 public interface RequestParamConst {
 	

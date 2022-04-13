@@ -1,13 +1,11 @@
 package com.moaview.ep.util;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,6 +20,7 @@ import com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.moaview.ep.exception.EpException;
 import com.moaview.ep.vo.DataEntity;
 import com.moaview.ep.vo.ResponseResult;
 import com.moaview.ep.vo.SearchParameter;
@@ -41,8 +40,6 @@ import com.moaview.ep.vo.SearchParameter;
  */
 public class EpUtils {
 	
-	final static String CHAR_SET = Charset.defaultCharset().name(); 
-
 	private EpUtils(){}
 
 	public static String generateUUID (){
@@ -69,17 +66,9 @@ public class EpUtils {
 	public static String objectToJsonString(Object json) {
 		try {
 			return new ObjectMapper().writeValueAsString(json);
-		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new EpException(e.getMessage(), e);
 		}
-		return "";
 	}
 
 	public static <T> T jsonStringToObject(String jsonString){
@@ -141,17 +130,9 @@ public class EpUtils {
 			}else {
 				return om.readValue(jsonString, (Class<T>)valueType);
 			}
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new EpException(e.getMessage(), e);
 		}
-		return null;
 	}
 	
 	public static ResponseResult getResponseResultItemOne(Object obj) {

@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 
- * @author ytkim
- *
+* @fileName		: SearchParameter.java
+* @desc		: search parameter
+* @author	: ytkim
  */
 public class SearchParameter {
 

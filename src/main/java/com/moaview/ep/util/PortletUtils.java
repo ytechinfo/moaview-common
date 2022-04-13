@@ -28,8 +28,7 @@ import com.moaview.ep.vo.DataEntity;
  */
 public class PortletUtils {
 	private static final PortletMode CONFIG_MODE = new PortletMode("config");
-	private static final PortletMode EDIT_DEFAULT_MODE = new PortletMode(
-			"edit_defaults");
+	private static final PortletMode EDIT_DEFAULT_MODE = new PortletMode("edit_defaults");
 
 	private PortletUtils() {
 	}

@@ -14,20 +14,18 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.moaview.ep.config.EpConfig;
 import com.moaview.ep.constans.RequestParamConst;
 import com.moaview.ep.vo.ClientInfo;
 import com.moaview.ep.vo.DataEntity;
 import com.moaview.ep.vo.SearchParameter;
 
 public final class HttpUtils {
-	public static final String CHAR_SET = "UTF-8";
-	public static final String PARAM_PAGE_NO = "pageNo";
-	public static final String PARAM_COUNT_PER_PAGE = "countPerPage";
-	public static final String PAGE_START_KEY = "_startRow";
-	public static final String PAGE_END_KEY = "_endRow";
+	
+	private static String CHAR_SET = EpConfig.getInstance().getCharSet();
 
 	public static String decode(String s) throws UnsupportedEncodingException {
-		return decode(s, "UTF-8");
+		return decode(s, CHAR_SET);
 	}
 
 	public static String decode(String s, String charset) throws UnsupportedEncodingException {
@@ -35,7 +33,7 @@ public final class HttpUtils {
 	}
 
 	public static String encode(String s) throws UnsupportedEncodingException {
-		return encode(s, "UTF-8");
+		return encode(s, CHAR_SET);
 	}
 
 	public static String encode(String s, String charset) throws UnsupportedEncodingException {
@@ -547,20 +545,24 @@ public final class HttpUtils {
 	}
 	
 	public static String getDownloadFileName(HttpServletRequest req, String downFileName) throws UnsupportedEncodingException {
+		return getDownloadFileName(req, downFileName , CHAR_SET);
+	}
+	
+	public static String getDownloadFileName(HttpServletRequest req, String downFileName, String charset) throws UnsupportedEncodingException {
 		ClientInfo clientInfo = getClientInfo(req);
 
 		if (isIE(clientInfo)) {
-			downFileName = URLEncoder.encode(downFileName, "UTF-8").replaceAll("\\+", "%20");
+			downFileName = URLEncoder.encode(downFileName, charset).replaceAll("\\+", "%20");
 		}else if(isFirefox(clientInfo)){
-			downFileName = "\""+new String(downFileName.getBytes("UTF-8"), "ISO-8859-1")+"\"";
+			downFileName = "\""+new String(downFileName.getBytes(charset), "ISO-8859-1")+"\"";
 		}else if(isChrome(clientInfo)){
-			downFileName = URLEncoder.encode(downFileName, "UTF-8").replaceAll("\\+", "%20");
+			downFileName = URLEncoder.encode(downFileName, charset).replaceAll("\\+", "%20");
 		}else if(isSafari(clientInfo)){
-			downFileName = "\""+new String(downFileName.getBytes("UTF-8"), "ISO-8859-1")+"\"";
+			downFileName = "\""+new String(downFileName.getBytes(charset), "ISO-8859-1")+"\"";
 		}else if(isOpera(clientInfo)){
-			downFileName = "\""+new String(downFileName.getBytes("UTF-8"), "ISO-8859-1")+"\"";
+			downFileName = "\""+new String(downFileName.getBytes(charset), "ISO-8859-1")+"\"";
 		}else {
-			downFileName = URLEncoder.encode(downFileName, "UTF-8").replaceAll("\\+", "%20");
+			downFileName = URLEncoder.encode(downFileName, charset).replaceAll("\\+", "%20");
 		}
 		
 		return downFileName;

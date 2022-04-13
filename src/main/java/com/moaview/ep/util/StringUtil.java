@@ -8,12 +8,6 @@ import java.util.List;
 
 public class StringUtil {
 	
-	public static String paramReplace2(String delim, String str, String key, String replace){
-		String reg = delim+key+delim;
-		return str.replaceAll(reg, replace);
-	}
-	
-	
 	public static String paramReplace(String delim, String str, String key, String replace){
 		if(str.indexOf(delim) < 0) return str; 
 		

@@ -2,6 +2,11 @@ package com.moaview.ep.vo;
 
 import org.apache.commons.io.FilenameUtils;
 
+/**
+* @fileName		: AppFileInfo.java
+* @desc		: file vo
+* @author	: ytkim
+ */
 public class AppFileInfo {
 	private String fileGroup;
 

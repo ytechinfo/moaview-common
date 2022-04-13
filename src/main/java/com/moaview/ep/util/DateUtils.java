@@ -10,17 +10,19 @@ import org.joda.time.PeriodType;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import com.moaview.ep.config.EpConfig;
+
 public final class DateUtils
 {
 	private DateUtils() {
 	};
 
 	// 날짜 포켓.
-	final static String DATE_FORMAT = "yyyy-MM-dd";
+	final static String DATE_FORMAT = EpConfig.getInstance().getProperty("format.date", "yyyy-MM-dd");
 
-	final static String TIME_FORMAT = "HH:mm:ss.SSS";
+	final static String TIME_FORMAT = EpConfig.getInstance().getProperty("format.time", "HH:mm:ss.SSS");
 
-	final static String TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+	final static String TIMESTAMP_FORMAT = EpConfig.getInstance().getProperty("format.timestamp", "yyyy-MM-dd HH:mm:ss.SSS");
 
 	final static DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
 	final static DateTimeFormatter timeFormatter = DateTimeFormat.forPattern(TIME_FORMAT);

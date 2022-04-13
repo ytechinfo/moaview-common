@@ -1,17 +1,22 @@
 package com.moaview.ep.config;
 
-public class EpConfigException extends Exception
-{
-  public EpConfigException()
-  {
-  }
+/**
+ * @fileName : EpConfigException.java
+ * @desc : EpConfig Exception
+ * @author : ytkim
+ */
+public class EpConfigException extends Exception {
+	
+	private static final long serialVersionUID = 3417096434098863451L;
 
-  public EpConfigException(String s)
-  {
-    super(s);
-  }
+	public EpConfigException() {
+	}
 
-  public EpConfigException(String s, Exception exeception) {
-    super(s, exeception);
-  }
+	public EpConfigException(String s) {
+		super(s);
+	}
+
+	public EpConfigException(String s, Exception exeception) {
+		super(s, exeception);
+	}
 }
