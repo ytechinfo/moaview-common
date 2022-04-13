@@ -78,8 +78,8 @@ public final class HttpUtils {
 			int first = (pageNo - 1) * countPerPage + 1;
 			int last = first + countPerPage - 1;
 
-			entity.put(RequestParamConst.PAGING_START_ROW, Integer.valueOf(first));
-			entity.put(RequestParamConst.PAGING_END_ROW, Integer.valueOf(last));
+			entity.put(RequestParamConst.PAGING_START_ROW, first);
+			entity.put(RequestParamConst.PAGING_END_ROW, last);
 			entity.put(RequestParamConst.PAGING_COUNT_PER_PAGE, countPerPage);
 		}
 
@@ -432,15 +432,14 @@ public final class HttpUtils {
 	
 	/**
 	 *
-	 * @Method Name  : getClientPcInfo
-	 * @Method 설명 : client info
-	 * @작성일   : 2019. 9. 21.
-	 * @작성자   : ytkim
-	 * @변경이력  :
+	 * @method   : getClientInfo
+	 * @desc : client info
+	 * @date   : 2019. 9. 21.
+	 * @author   : ytkim
+	 * @history  :
 	 * @param request
 	 * @return
 	 */
-
 	public static ClientInfo getClientInfo(HttpServletRequest request) {
 		String userAgent = "Unknown";
 	    String osType = "Unknown";
@@ -518,14 +517,14 @@ public final class HttpUtils {
 	public static boolean isOpera(ClientInfo clientPcInfo) {
 		return "opera".equalsIgnoreCase(clientPcInfo.getBrowser());
 	}
-
+	
 	/**
 	 *
-	 * @Method Name  : getClientIp
-	 * @Method 설명 : ip 정보.
-	 * @작성일   : 2019. 9. 21.
-	 * @작성자   : ytkim
-	 * @변경이력  :
+	 * @method  : getClientIp
+	 * @desc : ip 정보.
+	 * @date   : 2019. 9. 21.
+	 * @author   : ytkim
+	 * @history  :
 	 * @param req
 	 * @return
 	 */

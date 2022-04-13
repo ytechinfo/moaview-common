@@ -1,12 +1,9 @@
 package com.moaview.ep.vo;
 
 /**
- * 
- * @FileName  : ClientPcInfo.java
- * @프로그램 설명 : client pc info
- * @Date      : 2019. 9. 21. 
- * @작성자      : ytkim
- * @변경이력 :
+* @fileName	: ClientInfo.java
+* @desc		: client infomation 
+* @author	: ytkim
  */
 public class ClientInfo {
 	private String userAgent;

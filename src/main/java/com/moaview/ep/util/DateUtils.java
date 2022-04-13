@@ -84,7 +84,7 @@ public final class DateUtils
 	/**
 	 * 
 	 * @method : stringToDate
-	 * @desc : string -> date
+	 * @desc : string - date
 	 * @author : ytkim
 	 * @param date
 	 * @return
@@ -100,7 +100,7 @@ public final class DateUtils
 	/**
 	 * 
 	 * @method : stringToTimestamp
-	 * @desc : string -> timestamp
+	 * @desc : string - timestamp
 	 * @author : ytkim
 	 * @param date
 	 * @return

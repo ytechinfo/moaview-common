@@ -2,6 +2,7 @@ package com.moaview.ep.util;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
@@ -22,6 +23,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.moaview.ep.vo.DataEntity;
+import com.moaview.ep.vo.ResponseResult;
+import com.moaview.ep.vo.SearchParameter;
 
 /**
  *
@@ -149,6 +152,25 @@ public class EpUtils {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static ResponseResult getResponseResultItemOne(Object obj) {
+		ResponseResult responseResult = new ResponseResult();
+		responseResult.setItemOne(obj);
+		return responseResult;
+	}
+
+	public static ResponseResult getResponseResultItemList(List<?> list) {
+		ResponseResult responseResult = new ResponseResult();
+		responseResult.setItemList(list);
+		return responseResult;
+	}
+	
+	public static ResponseResult getResponseResult(List<?> result, int totalCount , SearchParameter searchParameter) {
+		ResponseResult responseResult = new ResponseResult();
+		responseResult.setItemList(result);
+		responseResult.setPage(PagingUtils.getPageObject(totalCount, searchParameter));
+		return responseResult;
 	}
 }
 

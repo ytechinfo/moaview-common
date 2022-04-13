@@ -10,9 +10,9 @@ import java.util.Properties;
 
 
 /**
- * 
- * @author ytkim
- *
+* @fileName	: EpConfig.java
+* @desc		: ep_config factory
+* @author	: ytkim
  */
 public class EpConfig {
 
