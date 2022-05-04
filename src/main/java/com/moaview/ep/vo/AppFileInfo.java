@@ -31,9 +31,11 @@ public class AppFileInfo {
 	private String userId;
 
 	private long fileSize;
+	
+	private String message;
 
 	public AppFileInfo(String fileGroup, String fileContId, String fileId, String fileFieldName, String fileName,
-			String orginFileName, String fileDownloadUri, String fileType, long fileSize, String filePath) {
+			String orginFileName, String fileDownloadUri, String fileType, long fileSize, String filePath, String message) {
 		this.fileGroup = fileGroup;
 		this.fileContId = fileContId;
 		this.fileId = fileId;
@@ -45,6 +47,7 @@ public class AppFileInfo {
 		this.fileSize = fileSize;
 		this.filePath = filePath;
 		this.fileExt = FilenameUtils.getExtension(fileName);
+		this.setMessage(message);
 	}
 
 	public String getFileName() {
@@ -141,5 +144,13 @@ public class AppFileInfo {
 
 	public void setOrginFileName(String orginFileName) {
 		this.orginFileName = orginFileName;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

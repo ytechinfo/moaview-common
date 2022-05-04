@@ -18,12 +18,12 @@ public final class DateUtils
 	};
 
 	// 날짜 포켓.
+	final static String YEAR_FORMAT = "yyyy";
 	final static String DATE_FORMAT = EpConfig.getInstance().getProperty("format.date", "yyyy-MM-dd");
-
 	final static String TIME_FORMAT = EpConfig.getInstance().getProperty("format.time", "HH:mm:ss.SSS");
-
 	final static String TIMESTAMP_FORMAT = EpConfig.getInstance().getProperty("format.timestamp", "yyyy-MM-dd HH:mm:ss.SSS");
 
+	final static DateTimeFormatter yearFormatter = DateTimeFormat.forPattern(YEAR_FORMAT);
 	final static DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(DATE_FORMAT);
 	final static DateTimeFormatter timeFormatter = DateTimeFormat.forPattern(TIME_FORMAT);
 	final static DateTimeFormatter timestampFormatter = DateTimeFormat.forPattern(TIMESTAMP_FORMAT);
@@ -55,8 +55,18 @@ public final class DateUtils
 		System.out.println(dateFormat(today.toDate()) + " :: " + dateFormat(yesterday.toDate()));
 	}
 
-	public static String format(Date date, String foramt) {
+	public static String year() {
+		return new DateTime(System.currentTimeMillis()).toString(yearFormatter);
+	}
+	public static String format(String format) {
+		return format(format, new Date());
+	}
+	public static String format(String foramt, Date date) {
 		return new DateTime(date).toString(DateTimeFormat.forPattern(foramt));
+	}
+	
+	public static String format(String foramt, long mili) {
+		return new DateTime(mili).toString(DateTimeFormat.forPattern(foramt));
 	}
 
 	public static String dateFormat(long timeMilli) {
@@ -168,19 +178,36 @@ public final class DateUtils
 
 		if (checkType == null)
 			return null;
+		
+		boolean addFlag = num < 0; 
+		num = Math.abs(num);
 
 		DateTime datetime = new DateTime();
 		if (DateCheckType.YEAR.equals(checkType)) {
-			return (num < 0 ? datetime.minusYears(num).toDate() : datetime.plusYears(num).toDate());
+			return (addFlag ? datetime.minusYears(num).toDate() : datetime.plusYears(num).toDate());
 		} else if (DateCheckType.MONTH.equals(checkType)) {
-			return (num < 0 ? datetime.minusMonths(num).toDate() : datetime.plusMonths(num).toDate());
+			return (addFlag ? datetime.minusMonths(num).toDate() : datetime.plusMonths(num).toDate());
 		} else if (DateCheckType.HOUR.equals(checkType)) {
-			return (num < 0 ? datetime.minusHours(num).toDate() : datetime.plusHours(num).toDate());
+			return (addFlag ? datetime.minusHours(num).toDate() : datetime.plusHours(num).toDate());
 		} else if (DateCheckType.MINUTES.equals(checkType)) {
-			return (num < 0 ? datetime.minusMinutes(num).toDate() : datetime.plusMinutes(num).toDate());
+			return (addFlag ? datetime.minusMinutes(num).toDate() : datetime.plusMinutes(num).toDate());
 		} else {
-			return (num < 0 ? datetime.minusDays(num).toDate() : datetime.plusDays(num).toDate());
+			return (addFlag ? datetime.minusDays(num).toDate() : datetime.plusDays(num).toDate());
 		}
+	}
+	
+	/**
+	 * 
+	 * @method : calcDateFormat
+	 * @desc : date 연산 후 format으로 리턴.
+	 * @author : ytkim
+	 * @param date
+	 * @param num
+	 * @param checkType
+	 * @return
+	 */
+	public static String calcDateFormat(int num, DateCheckType checkType, String format) {
+		return format(format, calcDate(num, checkType));
 	}
 	
 	/**
@@ -196,18 +223,36 @@ public final class DateUtils
 	public static Date calcDate(Date date, int num, DateCheckType checkType) {
 		if (checkType == null)
 			return null;
-
+		
+		boolean addFlag = num < 0; 
+		num = Math.abs(num);
+		
 		DateTime datetime = new DateTime(date);
 		if (DateCheckType.YEAR.equals(checkType)) {
-			return (num < 0 ? datetime.minusYears(num).toDate() : datetime.plusYears(num).toDate());
+			return (addFlag ? datetime.minusYears(num).toDate() : datetime.plusYears(num).toDate());
 		} else if (DateCheckType.MONTH.equals(checkType)) {
-			return (num < 0 ? datetime.minusMonths(num).toDate() : datetime.plusMonths(num).toDate());
+			return (addFlag ? datetime.minusMonths(num).toDate() : datetime.plusMonths(num).toDate());
 		} else if (DateCheckType.HOUR.equals(checkType)) {
-			return (num < 0 ? datetime.minusHours(num).toDate() : datetime.plusHours(num).toDate());
+			return (addFlag ? datetime.minusHours(num).toDate() : datetime.plusHours(num).toDate());
 		} else if (DateCheckType.MINUTES.equals(checkType)) {
-			return (num < 0 ? datetime.minusMinutes(num).toDate() : datetime.plusMinutes(num).toDate());
+			return (addFlag ? datetime.minusMinutes(num).toDate() : datetime.plusMinutes(num).toDate());
 		} else {
-			return (num < 0 ? datetime.minusDays(num).toDate() : datetime.plusDays(num).toDate());
+			return (addFlag ? datetime.minusDays(num).toDate() : datetime.plusDays(num).toDate());
 		}
+	}
+	
+	/**
+	 * 
+	 * @method : calcDateFormat
+	 * @desc : date 연산 후 format으로 리턴.
+	 * @author : ytkim
+	 * @param date
+	 * @param num
+	 * @param checkType
+	 * @param format
+	 * @return
+	 */
+	public static String calcDateFormat(Date date, int num, DateCheckType checkType, String format) {
+		return format(format, calcDate(date, num, checkType));
 	}
 }

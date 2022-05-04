@@ -1,25 +1,24 @@
 package com.moaview.ep.util;
 
-import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.moaview.ep.config.EpConfig;
 import com.moaview.ep.exception.EpException;
 import com.moaview.ep.vo.DataEntity;
 import com.moaview.ep.vo.ResponseResult;
@@ -38,7 +37,9 @@ import com.moaview.ep.vo.SearchParameter;
 
 *-----------------------------------------------------------------------------
  */
-public class EpUtils {
+public final class EpUtils {
+	
+	private static String CHAR_SET = EpConfig.getInstance().getCharSet();
 	
 	private EpUtils(){}
 
@@ -52,6 +53,16 @@ public class EpUtils {
 
 	public static String generateUUID (String prefix ,String suffix){
 		return prefix+UUID.randomUUID().toString().replaceAll("-", "")+suffix;
+	}
+	
+	public static String nameUUIDFromBytes(String source){
+
+		try {
+			byte[] bytes = source.getBytes(CHAR_SET);
+			return UUID.nameUUIDFromBytes(bytes).toString().replaceAll("-", "");
+		}catch(UnsupportedEncodingException e) {
+			throw new EpException(" nameUUIDFromBytes error : "+ e.getMessage(), e);
+		}
 	}
 	/**
 	 *
