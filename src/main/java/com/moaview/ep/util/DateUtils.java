@@ -201,9 +201,9 @@ public final class DateUtils
 	 * @method : calcDateFormat
 	 * @desc : date 연산 후 format으로 리턴.
 	 * @author : ytkim
-	 * @param date
-	 * @param num
-	 * @param checkType
+	 * @param num int
+	 * @param checkType  DateCheckType
+	 * @param format  format
 	 * @return
 	 */
 	public static String calcDateFormat(int num, DateCheckType checkType, String format) {
