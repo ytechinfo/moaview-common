@@ -9,6 +9,8 @@ import java.util.Map;
 import com.moaview.ep.constans.CodeEnumValue;
 import com.moaview.ep.constans.RequestResultCode;
 
+import lombok.Builder;
+
 public class ResponseResult implements Serializable {
 	private static final long serialVersionUID = 1966357376203287562L;
 	/** 상태 코드값*/
@@ -34,6 +36,20 @@ public class ResponseResult implements Serializable {
 	
 	/** 추가 데이터   */
 	private Map<String, Object> customs;
+	
+	public ResponseResult() {}
+	
+	@Builder
+	public ResponseResult(int status, CodeEnumValue resultCode, String messageCode, String message, List<Class<?>> list, Object item, PagingInfo page, Map<String, Object> customs) {
+		this.status = status; 
+		this.resultCode = resultCode; 
+		this.messageCode = messageCode; 
+		this.message = message; 
+		this.list = list; 
+		this.item = item; 
+		this.page = page; 
+		this.customs = customs; 
+	}
 
 	public CodeEnumValue getResultCode() {
 		return this.resultCode;

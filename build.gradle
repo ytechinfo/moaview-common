@@ -17,7 +17,7 @@ repositories {
 def projectName ='moaview-ep'
 def projectDesc ='java common class'
 def projectGroupId ='com.moaview'
-def projectVersion ='0.0.6'
+def projectVersion ='0.0.8'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -40,10 +40,16 @@ def def_version = [
 	junit : '5.2.0'
 	,junitPlatform : '1.5.0'
 	,jspApi : '2.3.3'
-	,jackson : '2.13.1'
+	,jackson : '2.13.3'
+	,lombok : '1.18.10'
 ]
 
 dependencies {
+	annotationProcessor( [group: 'org.projectlombok' , name: 'lombok' , version: def_version.lombok])
+	testAnnotationProcessor([group: 'org.projectlombok' , name: 'lombok' , version: def_version.lombok])
+	implementation group: 'org.projectlombok' , name: 'lombok' , version: def_version.lombok
+
+
    //junit
 	testImplementation(
 		 [ group: 'org.junit.jupiter' , name: 'junit-jupiter-api' , version: def_version.junit ]
@@ -58,9 +64,8 @@ dependencies {
 	implementation( // apache.commons
 		[ group: 'org.apache.commons' , name: 'commons-collections4' , version: '4.4']
 		,[ group: 'org.apache.commons' , name: 'commons-lang3' , version: '3.12.0']
-		,[ group: 'commons-io' , name: 'commons-io' , version: '2.6']
-	)
-	
+		,[ group: 'commons-io' , name: 'commons-io' , version: '2.11.0']
+	)	
 	//jackson
 	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:  def_version.jackson
 	

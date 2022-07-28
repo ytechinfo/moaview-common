@@ -35,10 +35,6 @@ public class EpConfig {
 		}
 	}
 
-	public static void main(String[] args) {
-		System.out.println("asdfawefwef : " + getInstance().getProperty("runtime"));
-	}
-
 	public static EpConfig getInstance() {
 		return EpConfigHolder.instance;
 	}
@@ -48,10 +44,11 @@ public class EpConfig {
 			File jdf_file = null;
 			try {
 				String configPropFile = getSystemProperty("moaview.config.path");
+				
+				System.out.println("=========moaview config file load start==================");
+				System.out.println("moaview.config.path : [" + configPropFile + "] default path : ["+ prop_file+"]");
 
 				if ((configPropFile != null) && (!"".equals(configPropFile))) {
-					System.out.println("=========moaview config file load start==================");
-					System.out.println("config.path : [" + configPropFile + "]");
 
 					if (configPropFile.startsWith("classpath:")) {
 						configPropFile = configPropFile.replaceFirst("classpath:", "");
@@ -86,13 +83,9 @@ public class EpConfig {
 				}
 				
 				charSet =getProperty("charset","UTF-8");
-			} catch (EpConfigException e) {
-				jdf_last_modified = 0L;
-				throw new EpConfigException(getClass().getName() + e.getMessage());
 			} catch (Exception e) {
 				jdf_last_modified = 0L;
-				throw new EpConfigException(getClass().getName() + " file: [" + jdf_file + "] msg : "
-						+ e.getLocalizedMessage() + "\n" + e.getMessage());
+				System.err.println(getClass().getName() + " file: [" + jdf_file + "] msg : "+ e.getMessage()); 
 			}
 		}
 	}

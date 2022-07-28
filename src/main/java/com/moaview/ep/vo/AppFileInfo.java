@@ -2,6 +2,8 @@ package com.moaview.ep.vo;
 
 import org.apache.commons.io.FilenameUtils;
 
+import lombok.Builder;
+
 /**
 * @fileName		: AppFileInfo.java
 * @desc		: file vo
@@ -33,7 +35,8 @@ public class AppFileInfo {
 	private long fileSize;
 	
 	private String message;
-
+	
+	@Builder
 	public AppFileInfo(String fileGroup, String fileContId, String fileId, String fileFieldName, String fileName,
 			String orginFileName, String fileDownloadUri, String fileType, long fileSize, String filePath, String message) {
 		this.fileGroup = fileGroup;
