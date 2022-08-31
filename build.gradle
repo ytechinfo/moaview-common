@@ -17,7 +17,7 @@ repositories {
 def projectName ='moaview-ep'
 def projectDesc ='java common class'
 def projectGroupId ='com.moaview'
-def projectVersion ='0.0.8'
+def projectVersion ='0.0.9'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

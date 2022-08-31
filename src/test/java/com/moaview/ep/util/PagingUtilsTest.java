@@ -10,10 +10,12 @@ class PagingUtilsTest {
 
 	@Test
 	void test() {
-		PagingInfo info =  PagingUtils.getPageObject(101, 11, 102, 5);
+		PagingInfo info =  PagingUtils.getPageObject(110, 8, 10);
 		
 		System.out.println(info);
-		assertTrue("start end page check : ",info.getCurrStartPage()== 7 && info.getCurrEndPage()== 16);
+		
+		
+		assertTrue("start end page check : ",info.getCurrStartPage()== 2 && info.getCurrEndPage()== 11);
 	}
 
 }

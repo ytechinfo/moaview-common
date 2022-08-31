@@ -118,22 +118,25 @@ public class ResponseResult implements Serializable{
 		}
 	}
 
-	/**
-	 * 정보를 문자열로 반환한다.
-	 *
-	 * @return String 검색에 대한 정보
-	 */
-	@Override
-	public String toString() {
-		return "JsonReturnEntity  [status=" + status + ",resultCode=" + resultCode + ", message=" + messageCode + ", items=" + list
-				+ ", item=" + item + ", page=" + page +"]";
-	}
-
 	public String getMessage() {
 		return message;
 	}
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+	@Override
+	public String toString() {
+		return new StringBuilder().append("ResponseResult")
+				.append("[status=").append(status)
+				.append(", resultCode=").append(resultCode)
+				.append(", message=").append(message)
+				.append(", messageCode=").append(messageCode)
+				.append(", items=").append(list)
+				.append(", item=").append(item)
+				.append(", page=").append(page)
+				.append("]")
+				.toString();
 	}
 }
