@@ -197,6 +197,18 @@ public final class DateUtils
 	}
 	
 	/**
+	 * date 연산
+	 *
+	 * @method : calcDateFormat
+	 * @param num
+	 * @param checkType
+	 * @return
+	 */
+	public static String calcDateFormat(int num, DateCheckType checkType) {
+		return calcDateFormat(num, checkType, DATE_FORMAT);
+	}
+	
+	/**
 	 * 
 	 * @method : calcDateFormat
 	 * @desc : date 연산 후 format으로 리턴.
@@ -239,6 +251,19 @@ public final class DateUtils
 		} else {
 			return (addFlag ? datetime.minusDays(num).toDate() : datetime.plusDays(num).toDate());
 		}
+	}
+	
+	/**
+	 * date 계산
+	 *
+	 * @method : calcDateFormat
+	 * @param date 계산할 날짜
+	 * @param num	+- 숫자
+	 * @param checkType  dateType
+	 * @return
+	 */
+	public static String calcDateFormat(Date date, int num, DateCheckType checkType) {
+		return calcDateFormat(date, num, checkType, DATE_FORMAT);
 	}
 	
 	/**
