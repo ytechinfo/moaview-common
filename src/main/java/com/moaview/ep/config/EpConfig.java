@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 
@@ -24,7 +25,7 @@ public class EpConfig {
 
 	private String prop_file = "config/ep_config.properties";
 	
-	private String charSet;
+	private String charSet= Charset.defaultCharset().displayName();
 
 	private EpConfig() {
 		try {
