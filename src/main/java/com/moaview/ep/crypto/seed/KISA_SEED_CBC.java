@@ -1,10 +1,4 @@
 package com.moaview.ep.crypto.seed;
-/**
-@file KISA_SEED_CBC.java
-@brief SEED CBC 암호 알고리즘
-@author Copyright (c) 2013 by KISA
-@remarks http://seed.kisa.or.kr/
-*/
 
 public class KISA_SEED_CBC {
 
