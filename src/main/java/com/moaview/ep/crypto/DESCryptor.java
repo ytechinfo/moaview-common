@@ -9,7 +9,7 @@ import javax.crypto.spec.SecretKeySpec;
 import com.moaview.ep.config.EpConfig;
 import com.moaview.ep.exception.EncryptDecryptException;
 
-public class DESCrypter {
+public class DESCryptor {
 
 	private static final String CRYPT_ALGORITHM = EpConfig.getInstance().getProperty("crypt.algorithm", "DESede");
 	private static final String PADDING = EpConfig.getInstance().getProperty("crypt.padding", "DESede/CBC/PKCS5Padding");
@@ -103,7 +103,7 @@ public class DESCrypter {
 	 */
 	private byte[] decodeToByteArray(String text) {
 		text = text.replaceAll("\\*", "+");
-		text = text.replaceAll("\\!", "!/");
+		text = text.replaceAll("\\!", "/");
 		text = text.replaceAll("\\~", "=");
 		
 		return Base64.getDecoder().decode(text);

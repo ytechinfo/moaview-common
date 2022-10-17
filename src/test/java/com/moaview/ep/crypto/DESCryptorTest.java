@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class DESCrypterTest {
+class DESCryptorTest {
 
 	@Test
 	void test() {
@@ -12,7 +12,7 @@ class DESCrypterTest {
 		String srcText = "asdfawejfklawjefkljawklefjlkawjekflawef";
 
 		// create crypter
-		final DESCrypter crypter = new DESCrypter();
+		final DESCryptor crypter = new DESCryptor();
 
 		// do encrypt
 		String encryptedText;

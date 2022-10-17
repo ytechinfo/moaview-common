@@ -154,13 +154,13 @@ public final class EpUtils {
 
 	public static ResponseResult getResponseResultItemList(List<?> list) {
 		ResponseResult responseResult = new ResponseResult();
-		responseResult.setItemList(list);
+		responseResult.setList(list);
 		return responseResult;
 	}
 	
 	public static ResponseResult getResponseResult(List<?> result, int totalCount , SearchParameter searchParameter) {
 		ResponseResult responseResult = new ResponseResult();
-		responseResult.setItemList(result);
+		responseResult.setList(result);
 		responseResult.setPage(PagingUtils.getPageObject(totalCount, searchParameter));
 		return responseResult;
 	}

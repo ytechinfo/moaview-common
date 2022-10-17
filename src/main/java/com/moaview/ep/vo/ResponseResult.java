@@ -42,9 +42,9 @@ public class ResponseResult implements Serializable{
 	private PagingInfo page;
 
 	/** 추가 데이터   */
-	private Map<String, Object> customs;
+	private Map<String, Object> customMap;
 	
-	public ResponseResult(int status, CodeEnumValue resultCode, String messageCode, String message, List<Class<?>> list, Object item, PagingInfo page, Map<String, Object> customs) {
+	public ResponseResult(int status, CodeEnumValue resultCode, String messageCode, String message, List<Class<?>> list, Object item, PagingInfo page, Map<String, Object> customMap) {
 		this.status = status; 
 		this.resultCode = resultCode; 
 		this.messageCode = messageCode; 
@@ -52,7 +52,7 @@ public class ResponseResult implements Serializable{
 		this.list = list; 
 		this.item = item; 
 		this.page = page; 
-		this.customs = customs; 
+		this.customMap = customMap; 
 	}
 
 	public CodeEnumValue getResultCode() {
@@ -63,11 +63,16 @@ public class ResponseResult implements Serializable{
 		this.resultCode = code;
 	}
 
+	@Deprecated
 	public List getItems() {
 		return list;
 	}
+	
+	public List getList() {
+		return list;
+	}
 
-	public void setItemList(List items) {
+	public void setList(List items) {
 		this.list = items ==null ? new ArrayList():items;
 	}
 
@@ -87,15 +92,19 @@ public class ResponseResult implements Serializable{
 		this.page = page;
 	}
 
-	public void addCustoms(String key , Object obj) {
-		if(customs==null){
-			customs = new HashMap<String, Object> ();
+	public void addCustomAttribute(String key , Object obj) {
+		if(customMap==null){
+			customMap = new HashMap<String, Object> ();
 		}
-		customs.put(key, obj);
+		customMap.put(key, obj);
 	}
 
-	public Map<String, Object> getCustoms() {
-		return customs;
+	public Map<String, Object> getCustomMap() {
+		return customMap;
+	}
+	
+	public void setCustomMap(Map<String, Object> customMap) {
+		this.customMap = customMap;
 	}
 
 	public String getMessageCode() {
