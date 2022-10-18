@@ -42,7 +42,7 @@ public class ResponseResult implements Serializable{
 	private PagingInfo page;
 
 	/** 추가 데이터   */
-	private Map<String, Object> customMap;
+	private Map customMap;
 	
 	public ResponseResult(int status, CodeEnumValue resultCode, String messageCode, String message, List<Class<?>> list, Object item, PagingInfo page, Map<String, Object> customMap) {
 		this.status = status; 
@@ -63,11 +63,6 @@ public class ResponseResult implements Serializable{
 		this.resultCode = code;
 	}
 
-	@Deprecated
-	public List getItems() {
-		return list;
-	}
-	
 	public List getList() {
 		return list;
 	}
@@ -99,11 +94,11 @@ public class ResponseResult implements Serializable{
 		customMap.put(key, obj);
 	}
 
-	public Map<String, Object> getCustomMap() {
+	public Map getCustomMap() {
 		return customMap;
 	}
 	
-	public void setCustomMap(Map<String, Object> customMap) {
+	public void setCustomMap(Map customMap) {
 		this.customMap = customMap;
 	}
 
