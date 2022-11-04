@@ -102,11 +102,11 @@ public final class DateUtils
 	 * @return
 	 */
 	public static Date stringToDate(String date) {
-		return DateTime.parse(date, dateFormatter).toDate();
+		return dateFormatter.parseLocalDate(date).toDate();
 	}
 
 	public static Date stringToDate(String date, String format) {
-		return DateTime.parse(date, DateTimeFormat.forPattern(format)).toDate();
+		return DateTimeFormat.forPattern(format).parseLocalDate(date).toDate();
 	}
 
 	/**
